@@ -82,9 +82,9 @@
 				F4388581156EAD96000C2AB1 /* AppDelegate.h */,
 				F4388582156EAD96000C2AB1 /* AppDelegate.m */,
 				F4388584156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard */,
+				F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */,
 				F4388597156EB271000C2AB1 /* FlickrPhotosTVC.h */,
 				F4388598156EB271000C2AB1 /* FlickrPhotosTVC.m */,
-				F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */,
 				F4388579156EAD96000C2AB1 /* Supporting Files */,
 			);
 			path = Shutterbug;
