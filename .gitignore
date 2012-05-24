@@ -1,15 +1,21 @@
+# Mac OS X
+*.DS_Store
+
 # Xcode
-build/*
+global-ignores =
+*.o
+*.lo
+*.la
+*~.*
 *.pbxuser
-!default.pbxuser
 *.mode1v3
-!default.mode1v3
 *.mode2v3
-!default.mode2v3
 *.perspectivev3
-!default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
-xcuserdata
-profile
-*.moved-aside
+*.xcuserstate
+xcuserdata/
+project.xcworkspace/
+
+
+# Backup files
+*~.nib
+*.idlk
