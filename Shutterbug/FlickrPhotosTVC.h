@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FlickrPhotosTVC.h
 //  Shutterbug
 //
 //  Created by Paul Gambill on 5/24/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface FlickrPhotosTVC : UITableViewController
 
 @end
