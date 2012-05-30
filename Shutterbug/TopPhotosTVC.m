@@ -1,18 +1,18 @@
 //
-//  TopPhotosTVC.m
+//  FlickrPhotosTVC.m
 //  Shutterbug
 //
 //  Created by Paul Gambill on 5/24/12.
 //  Copyright (c) 2012 Deloitte | Übermind. All rights reserved.
 //
 
-#import "TopPhotosTVC.h"
+#import "FlickrPhotosTVC.h"
 
-@interface TopPhotosTVC ()
+@interface FlickrPhotosTVC ()
 
 @end
 
-@implementation TopPhotosTVC
+@implementation FlickrPhotosTVC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
