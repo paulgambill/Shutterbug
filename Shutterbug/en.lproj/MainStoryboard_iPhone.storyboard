@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" id="wfX-rh-frQ"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1216" y="197"/>
+            <point key="canvasLocation" x="1242" y="-301"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RiS-W7-LGs">
@@ -48,6 +48,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Tur-ua-1N0" kind="relationship" relationship="viewControllers" id="vbX-py-7Y8"/>
+                        <segue destination="35p-xu-D7w" kind="relationship" relationship="viewControllers" id="NrC-tu-604"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -70,7 +71,56 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="690" y="197"/>
+            <point key="canvasLocation" x="740" y="-259"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="iom-hz-csv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93M-GC-u60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="PCG-xS-1sT" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RoJ-9S-gdO">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LqJ-jI-pCA">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PCG-xS-1sT" id="GgQ-1F-YW1"/>
+                            <outlet property="delegate" destination="PCG-xS-1sT" id="4gw-AU-TfN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xCe-Nh-J3s"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1242" y="418"/>
+        </scene>
+        <!--Navigation Controller - Recents-->
+        <scene sceneID="b1r-tZ-ueu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJn-hQ-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="35p-xu-D7w" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recents" id="Dhs-mj-g4V"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="m1T-Hr-4Cr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PCG-xS-1sT" kind="relationship" relationship="rootViewController" id="ZDx-Vs-GpH"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="716" y="432"/>
         </scene>
     </scenes>
     <classes>
