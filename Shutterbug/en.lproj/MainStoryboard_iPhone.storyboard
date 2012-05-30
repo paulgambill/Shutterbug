@@ -53,12 +53,12 @@
             </objects>
             <point key="canvasLocation" x="201" y="197"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Top Places-->
         <scene sceneID="hRJ-Xz-w0j">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfj-iV-zDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Tur-ua-1N0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="33y-dM-5ty"/>
+                    <tabBarItem key="tabBarItem" title="Top Places" id="33y-dM-5ty"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="fPu-Lr-gIr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
