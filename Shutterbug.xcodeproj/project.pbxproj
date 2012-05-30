@@ -16,7 +16,7 @@
 		F4388583156EAD96000C2AB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4388582156EAD96000C2AB1 /* AppDelegate.m */; };
 		F4388586156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4388584156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard */; };
 		F4388589156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */; };
-		F4388599156EB271000C2AB1 /* TopPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4388598156EB271000C2AB1 /* TopPhotosTVC.m */; };
+		F4388599156EB271000C2AB1 /* FlickrPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4388598156EB271000C2AB1 /* FlickrPhotosTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		F4388582156EAD96000C2AB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F4388585156EAD96000C2AB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F4388588156EAD96000C2AB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		F4388597156EB271000C2AB1 /* TopPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPhotosTVC.h; sourceTree = "<group>"; };
-		F4388598156EB271000C2AB1 /* TopPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPhotosTVC.m; sourceTree = "<group>"; };
+		F4388597156EB271000C2AB1 /* FlickrPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotosTVC.h; sourceTree = "<group>"; };
+		F4388598156EB271000C2AB1 /* FlickrPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotosTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +98,8 @@
 				F4388582156EAD96000C2AB1 /* AppDelegate.m */,
 				F4388584156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard */,
 				F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */,
-				F4388597156EB271000C2AB1 /* TopPhotosTVC.h */,
-				F4388598156EB271000C2AB1 /* TopPhotosTVC.m */,
+				F4388597156EB271000C2AB1 /* FlickrPhotosTVC.h */,
+				F4388598156EB271000C2AB1 /* FlickrPhotosTVC.m */,
 				F4388579156EAD96000C2AB1 /* Supporting Files */,
 			);
 			path = Shutterbug;
@@ -182,7 +182,7 @@
 			files = (
 				F438857F156EAD96000C2AB1 /* main.m in Sources */,
 				F4388583156EAD96000C2AB1 /* AppDelegate.m in Sources */,
-				F4388599156EB271000C2AB1 /* TopPhotosTVC.m in Sources */,
+				F4388599156EB271000C2AB1 /* FlickrPhotosTVC.m in Sources */,
 				F412E21A1576E1B900CBCF7E /* FlickrFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
