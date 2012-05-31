@@ -8,11 +8,11 @@
 
 #import "FlickrPhotosTVC.h"
 
-@interface FlickrPhotosTVC ()
+@interface TopPhotosTVC ()
 
 @end
 
-@implementation FlickrPhotosTVC
+@implementation TopPhotosTVC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickrPhotosTVC : UITableViewController
+@interface TopPhotosTVC : UITableViewController
 
 @end
