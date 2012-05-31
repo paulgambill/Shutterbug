@@ -7,13 +7,15 @@
 //
 
 #import "TopPhotosTVC.h"
+#import "FlickrFetcher.h"
 
 @interface TopPhotosTVC ()
-
+@property (nonatomic, strong) NSArray *photosAtPlace;
 @end
 
 @implementation TopPhotosTVC
-@synthesize topPhotos = _topPhotos;
+@synthesize topPlaces = _topPlaces;
+@synthesize photosAtPlace = _photosAtPlace;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,9 +26,24 @@
     return self;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.topPlaces = [FlickrFetcher topPlaces];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*Logging flickrfetcher
+    
+    
+    self.topPlaces = [FlickrFetcher topPlaces];
+    self.photosAtPlace = [FlickrFetcher photosInPlace:[self.topPlaces objectAtIndex:1] maxResults:3];
+    
+    NSLog(@"%@", self.photosAtPlace);
+     */
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,24 +68,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.topPlaces count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Top Place";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    NSDictionary *photo = [self.topPlaces objectAtIndex:indexPath.row];
+    NSArray *components = [[photo objectForKey:FLICKR_PLACE_NAME] componentsSeparatedByString:@", "];
+    NSString *location = @"";
+    for (int i=1; i<[components count]; i++) {
+        location = [location stringByAppendingString:[components objectAtIndex:i]];
+        location = [location stringByAppendingString:@", "];
+    }
+    if ([location length] > 0) location = [location substringToIndex:[location length] - 2];
+    
+    cell.textLabel.text = [components objectAtIndex:0]; //specific city
+    cell.detailTextLabel.text = location; //rest of location information
     
     return cell;
 }
