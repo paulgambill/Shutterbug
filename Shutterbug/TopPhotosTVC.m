@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Deloitte | Übermind. All rights reserved.
 //
 
-#import "FlickrPhotosTVC.h"
+#import "TopPhotosTVC.h"
 
 @interface TopPhotosTVC ()
 
