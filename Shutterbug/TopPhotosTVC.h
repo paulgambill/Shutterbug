@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TopPhotosTVC : UITableViewController
-
+@property (nonatomic, strong) NSArray *topPhotos; //of Flickr photo dictionaries
 @end

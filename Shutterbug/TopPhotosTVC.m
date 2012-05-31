@@ -13,6 +13,7 @@
 @end
 
 @implementation TopPhotosTVC
+@synthesize topPhotos = _topPhotos;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
