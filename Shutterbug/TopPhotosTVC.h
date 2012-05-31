@@ -1,5 +1,5 @@
 //
-//  FlickrPhotosTVC.h
+//  TopPhotosTVC.h
 //  Shutterbug
 //
 //  Created by Paul Gambill on 5/24/12.
