@@ -18,6 +18,7 @@
 		F4388589156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */; };
 		F4388599156EB271000C2AB1 /* TopPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4388598156EB271000C2AB1 /* TopPhotosTVC.m */; };
 		F4CA8D5A1577D5290083957D /* RecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA8D591577D5290083957D /* RecentPhotosTVC.m */; };
+		F4CA8D66157D2A4B0083957D /* PhotosAtPlaceTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		F4388598156EB271000C2AB1 /* TopPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPhotosTVC.m; sourceTree = "<group>"; };
 		F4CA8D581577D5290083957D /* RecentPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotosTVC.h; sourceTree = "<group>"; };
 		F4CA8D591577D5290083957D /* RecentPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotosTVC.m; sourceTree = "<group>"; };
+		F4CA8D64157D2A4B0083957D /* PhotosAtPlaceTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosAtPlaceTVC.h; sourceTree = "<group>"; };
+		F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosAtPlaceTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				F4CA8D591577D5290083957D /* RecentPhotosTVC.m */,
 				F4388597156EB271000C2AB1 /* TopPhotosTVC.h */,
 				F4388598156EB271000C2AB1 /* TopPhotosTVC.m */,
+				F4CA8D64157D2A4B0083957D /* PhotosAtPlaceTVC.h */,
+				F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */,
 				F4388579156EAD96000C2AB1 /* Supporting Files */,
 			);
 			path = Shutterbug;
@@ -190,6 +195,7 @@
 				F4388599156EB271000C2AB1 /* TopPhotosTVC.m in Sources */,
 				F412E21A1576E1B900CBCF7E /* FlickrFetcher.m in Sources */,
 				F4CA8D5A1577D5290083957D /* RecentPhotosTVC.m in Sources */,
+				F4CA8D66157D2A4B0083957D /* PhotosAtPlaceTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

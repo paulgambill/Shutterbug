@@ -34,11 +34,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Place" textLabel="onU-hd-VCz" detailTextLabel="hzE-N8-wyF" style="IBUITableViewCellStyleSubtitle" id="7hS-t1-phH">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top Place" textLabel="onU-hd-VCz" detailTextLabel="hzE-N8-wyF" style="IBUITableViewCellStyleSubtitle" id="7hS-t1-phH">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="onU-hd-VCz">
@@ -58,6 +58,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="Il3-Ue-Yn3" kind="push" id="J5S-fu-JPR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -68,7 +71,37 @@
                     <navigationItem key="navigationItem" id="pZi-RA-TFN"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1753" y="-210"/>
+            <point key="canvasLocation" x="1193" y="-210"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="PqU-cO-p8j">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CES-NF-rfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Il3-Ue-Yn3" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6jw-Au-cb3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="OD5-pi-TkD">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Il3-Ue-Yn3" id="4WP-1C-x1Y"/>
+                            <outlet property="delegate" destination="Il3-Ue-Yn3" id="MS2-L9-fFk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9FD-EG-Irt"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1697" y="-210"/>
         </scene>
         <!--Recent PhotosTVC-->
         <scene sceneID="iom-hz-csv">
@@ -152,7 +185,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1227" y="-210"/>
+            <point key="canvasLocation" x="741" y="-210"/>
         </scene>
     </scenes>
     <classes>
