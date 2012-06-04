@@ -35,21 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    /*Logging flickrfetcher
-    
-    
-    self.topPlaces = [FlickrFetcher topPlaces];
-    self.photosAtPlace = [FlickrFetcher photosInPlace:[self.topPlaces objectAtIndex:1] maxResults:3];
-    
-    NSLog(@"%@", self.photosAtPlace);
-     */
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
