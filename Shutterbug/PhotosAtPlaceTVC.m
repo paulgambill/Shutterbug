@@ -25,9 +25,16 @@
     return self;
 }
 
+- (NSString *)getTitleFromSelection:(NSDictionary *)selection
+{
+    NSArray *components = [[[selection objectForKey:@"object"] valueForKey:@"_content"] componentsSeparatedByString:@", "];
+    return [components objectAtIndex:0];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = [self getTitleFromSelection:self.selection];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
