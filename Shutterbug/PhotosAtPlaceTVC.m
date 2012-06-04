@@ -7,13 +7,16 @@
 //
 
 #import "PhotosAtPlaceTVC.h"
+#import "FlickrFetcher.h"
 
 @interface PhotosAtPlaceTVC ()
 @property (nonatomic, copy) NSDictionary *selection;
+@property (nonatomic, strong) NSArray *photosAtPlace;
 @end
 
 @implementation PhotosAtPlaceTVC
 @synthesize selection = _selection;
+@synthesize photosAtPlace = _photosAtPlace;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -27,8 +30,14 @@
 
 - (NSString *)getTitleFromSelection:(NSDictionary *)selection
 {
-    NSArray *components = [[[selection objectForKey:@"object"] valueForKey:@"_content"] componentsSeparatedByString:@", "];
+    NSArray *components = [[[selection objectForKey:@"object"] valueForKey:FLICKR_PLACE_NAME] componentsSeparatedByString:@", "];
     return [components objectAtIndex:0];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.photosAtPlace = [FlickrFetcher photosInPlace:[self.selection objectForKey:@"object"] maxResults:50];
+    NSLog(@"%i", [self.photosAtPlace count]);
 }
 
 - (void)viewDidLoad
@@ -53,9 +62,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

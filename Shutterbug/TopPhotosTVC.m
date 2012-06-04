@@ -10,12 +10,10 @@
 #import "FlickrFetcher.h"
 
 @interface TopPhotosTVC ()
-@property (nonatomic, strong) NSArray *photosAtPlace;
 @end
 
 @implementation TopPhotosTVC
 @synthesize topPlaces = _topPlaces;
-@synthesize photosAtPlace = _photosAtPlace;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
