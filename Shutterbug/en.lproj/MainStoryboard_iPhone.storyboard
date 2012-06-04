@@ -24,11 +24,11 @@
             </objects>
             <point key="canvasLocation" x="231" y="177"/>
         </scene>
-        <!--Top PhotosTVC-->
+        <!--Top PhotosTVC - Top Locations-->
         <scene sceneID="JMQ-sv-aWn">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3RC-hT-97A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="ddx-cc-IV1" customClass="TopPhotosTVC" sceneMemberID="viewController">
+                <tableViewController title="Top Locations" id="ddx-cc-IV1" customClass="TopPhotosTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tfh-44-epP">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,22 +73,38 @@
             </objects>
             <point key="canvasLocation" x="1193" y="-210"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Photos At PlaceTVC - Photos At Place-->
         <scene sceneID="PqU-cO-p8j">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CES-NF-rfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Il3-Ue-Yn3" sceneMemberID="viewController">
+                <tableViewController title="Photos At Place" id="Il3-Ue-Yn3" customClass="PhotosAtPlaceTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6jw-Au-cb3">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="OD5-pi-TkD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mtA-PI-L7f" detailTextLabel="PaC-2z-5bO" style="IBUITableViewCellStyleSubtitle" id="OD5-pi-TkD">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mtA-PI-L7f">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PaC-2z-5bO">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -189,6 +205,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="PhotosAtPlaceTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosAtPlaceTVC.h"/>
+        </class>
         <class className="RecentPhotosTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotosTVC.h"/>
         </class>
