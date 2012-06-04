@@ -84,12 +84,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSDictionary *photo = [self.topPlaces objectAtIndex:indexPath.row];
+    
+    // parse the location names by commas
     NSArray *components = [[photo objectForKey:FLICKR_PLACE_NAME] componentsSeparatedByString:@", "];
     NSString *location = @"";
+    
+    // put together the 2nd and later location names for the subtitle text
     for (int i=1; i<[components count]; i++) {
         location = [location stringByAppendingString:[components objectAtIndex:i]];
         location = [location stringByAppendingString:@", "];
     }
+    
+    // remove the trailing comma and space
     if ([location length] > 0) location = [location substringToIndex:[location length] - 2];
     
     cell.textLabel.text = [components objectAtIndex:0]; //specific city
