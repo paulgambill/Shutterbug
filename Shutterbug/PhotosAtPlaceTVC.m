@@ -9,11 +9,11 @@
 #import "PhotosAtPlaceTVC.h"
 
 @interface PhotosAtPlaceTVC ()
-@property (nonatomic, strong) NSArray *placePhotos;
+@property (nonatomic, copy) NSDictionary *selection;
 @end
 
 @implementation PhotosAtPlaceTVC
-@synthesize placePhotos = _placePhotos;
+@synthesize selection = _selection;
 
 
 - (id)initWithStyle:(UITableViewStyle)style

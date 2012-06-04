@@ -67,11 +67,11 @@
         // prepare selection info
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         id object = [self.topPlaces objectAtIndex:indexPath.row];
-        NSDictionary *placePhotos = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
                                    indexPath, @"indexPath",
                                    object, @"object",
                                    nil];
-        [destination setValue:placePhotos forKey:@"placePhotos"];
+        [destination setValue:selection forKey:@"selection"];
     }
 }
 
