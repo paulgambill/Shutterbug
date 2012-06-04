@@ -170,7 +170,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJn-hQ-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="35p-xu-D7w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recents" id="Dhs-mj-g4V"/>
+                    <tabBarItem key="tabBarItem" title="Recents" image="clock.png" id="Dhs-mj-g4V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="m1T-Hr-4Cr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -205,6 +205,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clock.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
     <classes>
