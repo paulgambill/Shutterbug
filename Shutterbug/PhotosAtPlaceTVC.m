@@ -37,7 +37,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.photosAtPlace = [FlickrFetcher photosInPlace:[self.selection objectForKey:@"object"] maxResults:50];
-    NSLog(@"%i", [self.photosAtPlace count]);
+    //NSLog(@"%i", [self.photosAtPlace count]);
 }
 
 - (void)viewDidLoad
@@ -68,17 +68,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.photosAtPlace count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"place photo";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
+    NSString *title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+    NSString *subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    
+    // if there is a title in the dictionary set the cell title to photo title. If there is also a description, set that as subittle
+    // if there is no title, but there is a description, set cell title to description
+    // if there is no title or description, set cell title to "Unknown"
+    if (![title isEqualToString:@""]) {
+        title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+        
+        if (![subtitle isEqualToString:@""])
+            subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    } else if (![subtitle isEqualToString:@""]) {
+        title = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    } else {
+        title = @"Unknown";
+    }
+    
+    // set the cell title labels
+    cell.textLabel.text = title;
+    cell.detailTextLabel.text = subtitle;
     
     return cell;
 }

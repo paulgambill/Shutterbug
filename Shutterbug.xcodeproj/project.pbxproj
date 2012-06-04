@@ -109,7 +109,6 @@
 			children = (
 				F412E2161576E1B900CBCF7E /* FlickrFetcher */,
 				F4388581156EAD96000C2AB1 /* AppDelegate.h */,
-				F4CA8D67157D555D0083957D /* Icons */,
 				F4388582156EAD96000C2AB1 /* AppDelegate.m */,
 				F4388584156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard */,
 				F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */,
@@ -119,6 +118,7 @@
 				F4388598156EB271000C2AB1 /* TopPhotosTVC.m */,
 				F4CA8D64157D2A4B0083957D /* PhotosAtPlaceTVC.h */,
 				F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */,
+				F4CA8D67157D555D0083957D /* Icons */,
 				F4388579156EAD96000C2AB1 /* Supporting Files */,
 			);
 			path = Shutterbug;

@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mtA-PI-L7f" detailTextLabel="PaC-2z-5bO" style="IBUITableViewCellStyleSubtitle" id="OD5-pi-TkD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="place photo" textLabel="mtA-PI-L7f" detailTextLabel="PaC-2z-5bO" style="IBUITableViewCellStyleSubtitle" id="OD5-pi-TkD">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -208,17 +208,6 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="PhotosAtPlaceTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosAtPlaceTVC.h"/>
-        </class>
-        <class className="RecentPhotosTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotosTVC.h"/>
-        </class>
-        <class className="TopPhotosTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopPhotosTVC.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
