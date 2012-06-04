@@ -59,7 +59,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Il3-Ue-Yn3" kind="push" id="J5S-fu-JPR"/>
+                                    <segue destination="Il3-Ue-Yn3" kind="push" identifier="placePhotos" id="J5S-fu-JPR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="ddx-cc-IV1" id="Qvt-p0-KTx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pZi-RA-TFN"/>
+                    <navigationItem key="navigationItem" title="Top Places" id="pZi-RA-TFN"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1193" y="-210"/>

@@ -9,10 +9,12 @@
 #import "PhotosAtPlaceTVC.h"
 
 @interface PhotosAtPlaceTVC ()
-
+@property (nonatomic, strong) NSArray *placePhotos;
 @end
 
 @implementation PhotosAtPlaceTVC
+@synthesize placePhotos = _placePhotos;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

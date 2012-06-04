@@ -63,15 +63,15 @@
 {
     UIViewController *destination = segue.destinationViewController;
     
-    if ([destination respondsToSelector:@selector(setSelectionStyle:)]) {
+    if ([[segue identifier] isEqualToString:@"placePhotos"]) {
         // prepare selection info
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         id object = [self.topPlaces objectAtIndex:indexPath.row];
-        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *placePhotos = [NSDictionary dictionaryWithObjectsAndKeys:
                                    indexPath, @"indexPath",
                                    object, @"object",
                                    nil];
-        [destination setValue:selection forKey:@"selection"];
+        [destination setValue:placePhotos forKey:@"placePhotos"];
     }
 }
 
