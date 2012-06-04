@@ -189,7 +189,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knc-8S-tOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="NgO-z0-Tie" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Places" id="qGE-t8-zmh"/>
+                    <tabBarItem key="tabBarItem" title="Top Places" image="star.png" id="qGE-t8-zmh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ph5-Ql-kIa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -204,6 +204,9 @@
             <point key="canvasLocation" x="741" y="-210"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star.png" width="26" height="26"/>
+    </resources>
     <classes>
         <class className="PhotosAtPlaceTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosAtPlaceTVC.h"/>
