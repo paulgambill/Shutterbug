@@ -59,6 +59,22 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIViewController *destination = segue.destinationViewController;
+    
+    if ([destination respondsToSelector:@selector(setSelectionStyle:)]) {
+        // prepare selection info
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        id object = [self.topPlaces objectAtIndex:indexPath.row];
+        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   indexPath, @"indexPath",
+                                   object, @"object",
+                                   nil];
+        [destination setValue:selection forKey:@"selection"];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
