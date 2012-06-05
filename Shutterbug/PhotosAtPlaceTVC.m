@@ -60,6 +60,34 @@
     }
 }
 
+// helper method to get the correct title and subtitle for each cell
+- (NSDictionary *)titleAndSubtitleFromPhotoDictionary:(NSDictionary *)photo
+{
+    NSString *title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+    NSString *subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    
+    // if there is a title in the dictionary set the cell title to photo title. If there is also a description, set that as subittle
+    // if there is no title, but there is a description, set cell title to description
+    // if there is no title or description, set cell title to "Unknown"
+    if (![title isEqualToString:@""]) {
+        title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+        
+        if (![subtitle isEqualToString:@""])
+            subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    } else if (![subtitle isEqualToString:@""]) {
+        title = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    } else {
+        title = @"Unknown";
+    }
+    
+    NSDictionary *cellText = [NSDictionary dictionaryWithObjectsAndKeys:
+                              title, @"title",
+                              subtitle, @"subtitle",
+                              nil];
+    
+    return cellText;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -85,26 +113,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
-    NSString *title = [photo valueForKey:FLICKR_PHOTO_TITLE];
-    NSString *subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    
-    // if there is a title in the dictionary set the cell title to photo title. If there is also a description, set that as subittle
-    // if there is no title, but there is a description, set cell title to description
-    // if there is no title or description, set cell title to "Unknown"
-    if (![title isEqualToString:@""]) {
-        title = [photo valueForKey:FLICKR_PHOTO_TITLE];
-        
-        if (![subtitle isEqualToString:@""])
-            subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    } else if (![subtitle isEqualToString:@""]) {
-        title = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    } else {
-        title = @"Unknown";
-    }
+    NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
     
     // set the cell title labels
-    cell.textLabel.text = title;
-    cell.detailTextLabel.text = subtitle;
+    cell.textLabel.text = [cellText objectForKey:@"title"];
+    cell.detailTextLabel.text = [cellText objectForKey:@"subtitle"];
     
     return cell;
 }
