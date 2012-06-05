@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
+    
+    // title comes from the tapped cell
     self.title = [[self.selection objectForKey:@"cellText"] valueForKey:@"title"];
 	// Do any additional setup after loading the view.
 }

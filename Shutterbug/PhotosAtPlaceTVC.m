@@ -43,6 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // title comes from the tapped cell
     self.title = [self getTitleFromSelection:self.selection];
 }
 
