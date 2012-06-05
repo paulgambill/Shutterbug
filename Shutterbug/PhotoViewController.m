@@ -7,13 +7,18 @@
 //
 
 #import "PhotoViewController.h"
+#import "FlickrFetcher.h"
 
-@interface PhotoViewController ()
+@interface PhotoViewController () <UIScrollViewDelegate>
 @property (nonatomic, copy) NSDictionary *selection;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
 
 @implementation PhotoViewController
 @synthesize selection = _selection;
+@synthesize scrollView = _scrollView;
+@synthesize imageView = _imageView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,18 +30,48 @@
     return self;
 }
 
+
+//this method is necessary for the scrollview delegate. the delegate is set as self in viewDidLoad
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    
+    self.scrollView.delegate = self;
     
     // title comes from the tapped cell
     self.title = [[self.selection objectForKey:@"cellText"] valueForKey:@"title"];
-	// Do any additional setup after loading the view.
+    //self.view.backgroundColor = [UIColor redColor];
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSURL *photoURL = [FlickrFetcher urlForPhoto:[self.selection objectForKey:@"photo"] format:FlickrPhotoFormatOriginal];
+    self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+   
+    // set scrolling area equal to size of image
+    self.scrollView.contentSize = self.imageView.image.size;
+    
+    //set the image frame to the size of the image
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    // need to flash the scroll bars
+   [self.scrollView flashScrollIndicators];
 }
 
 - (void)viewDidUnload
 {
+    [self setScrollView:nil];
+    [self setImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

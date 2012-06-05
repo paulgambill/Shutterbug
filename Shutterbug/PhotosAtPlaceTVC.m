@@ -65,6 +65,7 @@
         NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
         NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
                                    indexPath, @"indexPath",
+                                   photo, @"photo",
                                    cellText, @"cellText",
                                    nil];
         [destination setValue:selection forKey:@"selection"];
