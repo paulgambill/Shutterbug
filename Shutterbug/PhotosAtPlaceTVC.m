@@ -55,8 +55,17 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    UIViewController *destination = segue.destinationViewController;
+    
     if ([[segue identifier] isEqualToString:@"photo view"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
+        NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
+        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   indexPath, @"indexPath",
+                                   cellText, @"cellText",
+                                   nil];
+        [destination setValue:selection forKey:@"selection"];
     }
 }
 
