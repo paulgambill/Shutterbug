@@ -63,12 +63,41 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
         NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
-        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSMutableDictionary *selection = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    indexPath, @"indexPath",
                                    photo, @"photo",
                                    cellText, @"cellText",
                                    nil];
         [destination setValue:selection forKey:@"selection"];
+        
+        // remove non-property list before adding the dictionary to UserDefaults
+        [selection removeObjectForKey:@"indexPath"];
+        
+        //saving photo to NSUserDefaults for use in Recents tab
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *selectedPhotos = nil;
+        if ([defaults objectForKey:@"selectedPhotos"]) {
+            selectedPhotos = [[defaults objectForKey:@"selectedPhotos"] mutableCopy];
+            
+            // only add a new recent photo if it's not already stored in recents
+            if (![selectedPhotos containsObject:selection]){
+            
+                // checks how many recent photos are stored. the max is 20. recent photos are inserted at the head of the array.
+                if ([selectedPhotos count] < 20) {
+                    [selectedPhotos insertObject:selection atIndex:0];
+                }
+                //else, remove the last object in the array and insert this new one at the head
+                else {
+                    [selectedPhotos removeLastObject];
+                    [selectedPhotos insertObject:selection atIndex:0];
+                }
+            }
+        }
+        else {
+            selectedPhotos = [NSMutableArray arrayWithObject:selection];
+        }
+        [defaults setObject:selectedPhotos forKey:@"selectedPhotos"];
+        [defaults synchronize];
     }
 }
 
