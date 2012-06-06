@@ -202,12 +202,12 @@
             </objects>
             <point key="canvasLocation" x="1242" y="418"/>
         </scene>
-        <!--Navigation Controller - Recents-->
+        <!--Navigation Controller - Recent Photos-->
         <scene sceneID="b1r-tZ-ueu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJn-hQ-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="35p-xu-D7w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recents" image="clock.png" id="Dhs-mj-g4V"/>
+                    <tabBarItem key="tabBarItem" title="Recent Photos" image="clock.png" id="Dhs-mj-g4V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="m1T-Hr-4Cr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
