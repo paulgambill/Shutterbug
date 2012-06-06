@@ -45,9 +45,6 @@
     
     // title comes from the tapped cell
     self.title = [[self.selection objectForKey:@"cellText"] valueForKey:@"title"];
-    //self.view.backgroundColor = [UIColor redColor];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +58,8 @@
     
     //set the image frame to the size of the image
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    
+    //self.scrollView.zoomScale = .6;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,7 +78,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end
