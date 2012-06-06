@@ -52,7 +52,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSURL *photoURL = [FlickrFetcher urlForPhoto:[self.selection objectForKey:@"photo"] format:FlickrPhotoFormatOriginal];
+    NSDictionary *photo = [self.selection objectForKey:@"photo"];
+    NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
     self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
    
     // set scrolling area equal to size of image
