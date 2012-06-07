@@ -126,12 +126,12 @@
         <scene sceneID="26w-Xd-cQK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fnx-5Q-QEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="iy8-kd-ddL" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="iy8-kd-ddL" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ED6-jA-0Fw">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="3" id="La2-L7-ahr">
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="5" id="La2-L7-ahr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -244,12 +244,12 @@
         <scene sceneID="6D1-xa-epJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX1-fo-GfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="PDn-q6-FG4" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="PDn-q6-FG4" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AeQ-04-g3n">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="3" id="9Gs-lE-ksM">
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="5" id="9Gs-lE-ksM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

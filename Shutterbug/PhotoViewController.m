@@ -59,12 +59,34 @@
     //set the image frame to the size of the image
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     
-    //self.scrollView.zoomScale = .6;
+    NSLog(@"image width is: %f", self.imageView.image.size.width);
+    NSLog(@"image height is: %f", self.imageView.image.size.height);
+    NSLog(@"view size is: %@",  NSStringFromCGSize(self.view.frame.size));
+    
+    double comparedHeight = self.view.frame.size.height / self.imageView.image.size.height;
+    double comparedWidth = self.view.frame.size.width / self.imageView.image.size.width;
+    
+    NSLog(@"comparedHeight is: %f", comparedHeight);
+    NSLog(@"comparedWidth is: %f", comparedWidth);
+    
+    
+    // we want the zoomScale to be the larger of the two ratios
+    if (comparedHeight > comparedWidth) {
+        self.scrollView.minimumZoomScale = comparedHeight;        
+    }
+    else {
+        self.scrollView.minimumZoomScale = comparedWidth;
+    }
+    
+    //set minimum to whatever the zoomscale is
+    self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+    NSLog(@"zoomScale is: %f", self.scrollView.zoomScale);
+    NSLog(@"minimum is: %f", self.scrollView.minimumZoomScale);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    // need to flash the scroll bars
+    // need to flash the scroll bars when initially viewing the image
    [self.scrollView flashScrollIndicators];
 }
 
@@ -80,5 +102,11 @@
 {
     return YES;
 }
+
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//{
+//    // reset scrolling area equal to size of image
+//    self.scrollView.contentSize = self.imageView.image.size;
+//}
 
 @end
