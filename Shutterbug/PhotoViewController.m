@@ -71,6 +71,10 @@
         self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
        
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //set the zoomScale to 1 if we're returning from another view so that contentSize can be adjusted
+            self.scrollView.zoomScale = 1;
+            
             // set scrolling area equal to size of image
             self.scrollView.contentSize = self.imageView.image.size;
             
