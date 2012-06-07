@@ -63,29 +63,36 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSDictionary *photo = [self.selection objectForKey:@"photo"];
-    NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
-    self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-   
-    // set scrolling area equal to size of image
-    self.scrollView.contentSize = self.imageView.image.size;
     
-    //set the image frame to the size of the image
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    
-    //get the correct minimum zoomScale and set the actual zoom to that
-    self.scrollView.minimumZoomScale = [self getZoomScale];
-    self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
-    
-    /* uncomment to log sizing and zoomScale
-    NSLog(@"image width is: %f", self.imageView.image.size.width);
-    NSLog(@"image height is: %f", self.imageView.image.size.height);
-    NSLog(@"view size is: %@",  NSStringFromCGSize(self.view.frame.size));
-    NSLog(@"comparedHeight is: %f", comparedHeight);
-    NSLog(@"comparedWidth is: %f", comparedWidth);
-    NSLog(@"zoomScale is: %f", self.scrollView.zoomScale);
-    NSLog(@"minimum is: %f", self.scrollView.minimumZoomScale);
-    */
+    dispatch_queue_t downloadQueue = dispatch_queue_create("photo downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSDictionary *photo = [self.selection objectForKey:@"photo"];
+        NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
+        self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // set scrolling area equal to size of image
+            self.scrollView.contentSize = self.imageView.image.size;
+            
+            //set the image frame to the size of the image
+            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+            
+            //get the correct minimum zoomScale and set the actual zoom to that
+            self.scrollView.minimumZoomScale = [self getZoomScale];
+            self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+            
+            /* uncomment to log sizing and zoomScale
+            NSLog(@"image width is: %f", self.imageView.image.size.width);
+            NSLog(@"image height is: %f", self.imageView.image.size.height);
+            NSLog(@"view size is: %@",  NSStringFromCGSize(self.view.frame.size));
+            NSLog(@"comparedHeight is: %f", comparedHeight);
+            NSLog(@"comparedWidth is: %f", comparedWidth);
+            NSLog(@"zoomScale is: %f", self.scrollView.zoomScale);
+            NSLog(@"minimum is: %f", self.scrollView.minimumZoomScale);
+            */
+        });
+    });
+    dispatch_release(downloadQueue);
 }
 
 - (void)viewDidAppear:(BOOL)animated

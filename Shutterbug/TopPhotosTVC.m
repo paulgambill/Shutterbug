@@ -27,7 +27,15 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.topPlaces = [FlickrFetcher topPlaces];
+    dispatch_queue_t downloadPlacesQueue = dispatch_queue_create("download places", NULL);
+    dispatch_async(downloadPlacesQueue, ^{
+        self.topPlaces = [FlickrFetcher topPlaces];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [super viewWillAppear:animated];
+        });
+    });
+    dispatch_release(downloadPlacesQueue);
 }
 
 - (void)viewDidLoad

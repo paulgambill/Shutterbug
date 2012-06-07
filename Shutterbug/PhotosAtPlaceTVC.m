@@ -36,8 +36,14 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.photosAtPlace = [FlickrFetcher photosInPlace:[self.selection objectForKey:@"object"] maxResults:50];
-    //NSLog(@"%i", [self.photosAtPlace count]);
+    dispatch_queue_t downloadPhotosQueue = dispatch_queue_create("download photos", NULL);
+    dispatch_async(downloadPhotosQueue, ^{
+        self.photosAtPlace = [FlickrFetcher photosInPlace:[self.selection objectForKey:@"object"] maxResults:50];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [super viewWillAppear:animated];
+        });
+    });
 }
 
 - (void)viewDidLoad
