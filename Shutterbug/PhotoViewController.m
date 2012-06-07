@@ -59,6 +59,14 @@
     
     // title comes from the tapped cell
     self.title = [[self.selection objectForKey:@"cellText"] valueForKey:@"title"];
+    
+    // tap gesture recognizer to hide the nav and tab bars
+    for (UIView * view in self.view.subviews) {
+        
+        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        recognizer.delegate = self;
+        [view addGestureRecognizer:recognizer];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -121,6 +129,34 @@
     //get the correct minimum zoomScale and set the actual zoom to that
     self.scrollView.minimumZoomScale = [self getZoomScale];
     self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+}
+
+//handling the tap recognizer
+- (void)handleTap:(UITapGestureRecognizer *)recognizer;
+{
+    [self.navigationController setNavigationBarHidden:![self.navigationController isNavigationBarHidden] animated:YES];
+    
+    if (self.tabBarController.tabBar.hidden == NO) {
+        self.tabBarController.tabBar.hidden = YES;
+    }
+    else {
+        self.tabBarController.tabBar.hidden = NO;
+    }
+    
+    
+    //reset zoomScale back to 1 so that contentSize can be modified correctly
+    self.scrollView.zoomScale = 1;
+    
+    // reset scrolling area equal to size of image
+    self.scrollView.contentSize = self.imageView.image.size;
+    
+    //reset the image frame to the size of the image
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    
+    //get the correct minimum zoomScale and set the actual zoom to that
+    self.scrollView.minimumZoomScale = [self getZoomScale];
+    self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+
 }
 
 @end
