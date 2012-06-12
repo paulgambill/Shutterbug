@@ -61,7 +61,7 @@
     self.title = [[self.selection objectForKey:@"cellText"] valueForKey:@"title"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     // set up activity indicator
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -77,7 +77,7 @@
         NSDictionary *photo = [self.selection objectForKey:@"photo"];
         NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
         self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-       
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [spinner stopAnimating];
@@ -95,24 +95,21 @@
             self.scrollView.minimumZoomScale = [self getZoomScale];
             self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
             
+            // need to flash the scroll bars when initially viewing the image
+            [self.scrollView flashScrollIndicators];
+            
             /* uncomment to log sizing and zoomScale
-            NSLog(@"image width is: %f", self.imageView.image.size.width);
-            NSLog(@"image height is: %f", self.imageView.image.size.height);
-            NSLog(@"view size is: %@",  NSStringFromCGSize(self.view.frame.size));
-            NSLog(@"comparedHeight is: %f", comparedHeight);
-            NSLog(@"comparedWidth is: %f", comparedWidth);
-            NSLog(@"zoomScale is: %f", self.scrollView.zoomScale);
-            NSLog(@"minimum is: %f", self.scrollView.minimumZoomScale);
-            */
+             NSLog(@"image width is: %f", self.imageView.image.size.width);
+             NSLog(@"image height is: %f", self.imageView.image.size.height);
+             NSLog(@"view size is: %@",  NSStringFromCGSize(self.view.frame.size));
+             NSLog(@"comparedHeight is: %f", comparedHeight);
+             NSLog(@"comparedWidth is: %f", comparedWidth);
+             NSLog(@"zoomScale is: %f", self.scrollView.zoomScale);
+             NSLog(@"minimum is: %f", self.scrollView.minimumZoomScale);
+             */
         });
     });
     dispatch_release(downloadQueue);
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    // need to flash the scroll bars when initially viewing the image
-   [self.scrollView flashScrollIndicators];
 }
 
 - (void)viewDidUnload
