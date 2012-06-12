@@ -63,14 +63,24 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // set up activity indicator
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.hidesWhenStopped = YES;
+    spinner.color = [UIColor blackColor];
+    spinner.center = self.view.center;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("photo downloader", NULL);
     dispatch_async(downloadQueue, ^{
+        [spinner startAnimating];
         NSDictionary *photo = [self.selection objectForKey:@"photo"];
         NSURL *photoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
         self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
        
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [spinner stopAnimating];
             
             //set the zoomScale to 1 if we're returning from another view so that contentSize can be adjusted
             self.scrollView.zoomScale = 1;

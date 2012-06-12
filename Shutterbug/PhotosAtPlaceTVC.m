@@ -36,10 +36,20 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    // set up activity indicator
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.hidesWhenStopped = YES;
+    spinner.color = [UIColor blackColor];
+    spinner.center = self.view.center;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    
     dispatch_queue_t downloadPhotosQueue = dispatch_queue_create("download photos", NULL);
     dispatch_async(downloadPhotosQueue, ^{
+        [spinner startAnimating];
         self.photosAtPlace = [FlickrFetcher photosInPlace:[self.selection objectForKey:@"object"] maxResults:50];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [spinner stopAnimating];
             [self.tableView reloadData];
             [super viewWillAppear:animated];
         });
