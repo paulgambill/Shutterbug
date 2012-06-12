@@ -27,10 +27,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // set up activity indicator
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.hidesWhenStopped = YES;
+    spinner.color = [UIColor blackColor];
+    spinner.center = self.view.center;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    
     dispatch_queue_t downloadPlacesQueue = dispatch_queue_create("download places", NULL);
     dispatch_async(downloadPlacesQueue, ^{
+        [spinner startAnimating];
         self.topPlaces = [FlickrFetcher topPlaces];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [spinner stopAnimating];
             [self.tableView reloadData];
             [super viewWillAppear:animated];
         });
@@ -46,8 +56,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
