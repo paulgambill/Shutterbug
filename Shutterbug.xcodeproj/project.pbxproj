@@ -17,6 +17,7 @@
 		F4388586156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4388584156EAD96000C2AB1 /* MainStoryboard_iPhone.storyboard */; };
 		F4388589156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4388587156EAD96000C2AB1 /* MainStoryboard_iPad.storyboard */; };
 		F4388599156EB271000C2AB1 /* TopPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4388598156EB271000C2AB1 /* TopPhotosTVC.m */; };
+		F45175531587E0ED0038B6D5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45175521587E0ED0038B6D5 /* MapKit.framework */; };
 		F4C27877157D715600C957B2 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C27876157D715600C957B2 /* PhotoViewController.m */; };
 		F4CA8D5A1577D5290083957D /* RecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA8D591577D5290083957D /* RecentPhotosTVC.m */; };
 		F4CA8D66157D2A4B0083957D /* PhotosAtPlaceTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */; };
@@ -44,6 +45,7 @@
 		F4388588156EAD96000C2AB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		F4388597156EB271000C2AB1 /* TopPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPhotosTVC.h; sourceTree = "<group>"; };
 		F4388598156EB271000C2AB1 /* TopPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPhotosTVC.m; sourceTree = "<group>"; };
+		F45175521587E0ED0038B6D5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F4C27875157D715600C957B2 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		F4C27876157D715600C957B2 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		F4CA8D581577D5290083957D /* RecentPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotosTVC.h; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45175531587E0ED0038B6D5 /* MapKit.framework in Frameworks */,
 				F4388573156EAD96000C2AB1 /* UIKit.framework in Frameworks */,
 				F4388575156EAD96000C2AB1 /* Foundation.framework in Frameworks */,
 				F4388577156EAD96000C2AB1 /* CoreGraphics.framework in Frameworks */,
@@ -83,6 +86,7 @@
 		F4388563156EAD96000C2AB1 = {
 			isa = PBXGroup;
 			children = (
+				F45175521587E0ED0038B6D5 /* MapKit.framework */,
 				F4388578156EAD96000C2AB1 /* Shutterbug */,
 				F4388571156EAD96000C2AB1 /* Frameworks */,
 				F438856F156EAD96000C2AB1 /* Products */,
