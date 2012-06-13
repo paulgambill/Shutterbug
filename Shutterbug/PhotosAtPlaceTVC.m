@@ -41,7 +41,7 @@
     spinner.hidesWhenStopped = YES;
     spinner.color = [UIColor blackColor];
     spinner.center = self.view.center;
-    [self.view addSubview:spinner];
+    [self.view.superview addSubview:spinner];
     [spinner startAnimating];
     
     dispatch_queue_t downloadPhotosQueue = dispatch_queue_create("download photos", NULL);
