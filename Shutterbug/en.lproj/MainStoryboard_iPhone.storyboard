@@ -68,10 +68,37 @@
                             <outlet property="delegate" destination="ddx-cc-IV1" id="Qvt-p0-KTx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Places" id="pZi-RA-TFN"/>
+                    <navigationItem key="navigationItem" title="Top Places" id="pZi-RA-TFN">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="d10-Ym-YRN">
+                            <connections>
+                                <segue destination="ttZ-5a-R2k" kind="push" id="CU6-Lb-jzr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1193" y="-210"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JYl-rF-g6z">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OF4-Ls-udn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ttZ-5a-R2k" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MeL-9e-n8d">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="V9w-yo-1xc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8tK-AI-3OD"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1697" y="-793"/>
         </scene>
         <!--Photos At PlaceTVC - Photos At Place-->
         <scene sceneID="PqU-cO-p8j">
@@ -120,7 +147,7 @@
                     <navigationItem key="navigationItem" id="9FD-EG-Irt"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1697" y="-210"/>
+            <point key="canvasLocation" x="2809" y="-474"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="26w-Xd-cQK">
@@ -151,7 +178,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2108" y="-210"/>
+            <point key="canvasLocation" x="3548" y="-274"/>
         </scene>
         <!--Recent PhotosTVC - Recent Photos-->
         <scene sceneID="iom-hz-csv">
