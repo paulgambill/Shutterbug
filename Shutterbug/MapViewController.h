@@ -10,5 +10,5 @@
 #import <MapKit/MapKit.h>
 
 @interface MapViewController : UIViewController
-@property (nonatomic, strong) NSArray *annotations; // of id <MKAnnotation>
+@property (nonatomic, strong) NSArray *photos; // of id <MKAnnotation>
 @end

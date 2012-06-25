@@ -15,15 +15,15 @@
 
 @implementation MapViewController
 @synthesize mapView = _mapView;
-@synthesize annotations = _annotations;
+@synthesize photos = _photos;
 
 - (void)updateMapView
 {
     if (self.mapView.annotations) {
         [self.mapView removeAnnotations:self.mapView.annotations];
     }
-    if (self.annotations) {
-        [self.mapView addAnnotations:self.annotations];
+    if (self.photos) {
+        [self.mapView addAnnotations:self.photos];
     }
 }
 
@@ -37,6 +37,11 @@
 {
     _annotations = annotations;
     [self updateMapView];
+}
+
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.photos count]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

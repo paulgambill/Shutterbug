@@ -12,10 +12,10 @@
 @implementation FlickrPhotoAnnotation
 @synthesize photo = _photo;
 
-+ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)flickrDictionary
++ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)photo
 {
     FlickrPhotoAnnotation *annotation = [[FlickrPhotoAnnotation alloc] init];
-    annotation.photo = flickrDictionary;
+    annotation.photo = photo;
     return annotation;
 }
 
