@@ -71,7 +71,7 @@
                     <navigationItem key="navigationItem" title="Top Places" id="pZi-RA-TFN">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="d10-Ym-YRN">
                             <connections>
-                                <segue destination="ttZ-5a-R2k" kind="push" id="CU6-Lb-jzr"/>
+                                <segue destination="ttZ-5a-R2k" kind="push" identifier="placesMap" id="CU6-Lb-jzr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

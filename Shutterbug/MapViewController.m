@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "FlickrPhotoAnnotation.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -33,16 +34,13 @@
     [self updateMapView];
 }
 
-- (void)setAnnotations:(NSArray *)annotations
+-(void)setPhotos:(NSArray *)photos
 {
-    _annotations = annotations;
+    _photos = photos;
     [self updateMapView];
 }
 
-- (NSArray *)mapAnnotations
-{
-    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.photos count]];
-}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +54,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload

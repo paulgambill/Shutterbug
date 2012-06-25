@@ -81,6 +81,10 @@
                                    nil];
         [destination setValue:selection forKey:@"selection"];
     }
+    
+    if ([[segue identifier] isEqualToString:@"placesMap"]) {
+        [destination setValue:[self mapAnnotations] forKey:@"photos"];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
