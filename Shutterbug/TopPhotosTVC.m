@@ -8,6 +8,7 @@
 
 #import "TopPhotosTVC.h"
 #import "FlickrFetcher.h"
+#import "FlickrPhotoAnnotation.h"
 
 @interface TopPhotosTVC ()
 @end
@@ -24,6 +25,14 @@
     return self;
 }
 
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.topPlaces count]];
+    for (NSDictionary *place in self.topPlaces) {
+        [annotations addObject:[FlickrPhotoAnnotation annotationForFlickrDictionary:place]];
+    }
+    return annotations;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -33,7 +42,7 @@
     spinner.color = [UIColor blackColor];
     spinner.center = self.view.center;
     [self.view.superview addSubview:spinner];
-    [spinner startAnimating];
+    //[spinner startAnimating];
     
     dispatch_queue_t downloadPlacesQueue = dispatch_queue_create("download places", NULL);
     dispatch_async(downloadPlacesQueue, ^{

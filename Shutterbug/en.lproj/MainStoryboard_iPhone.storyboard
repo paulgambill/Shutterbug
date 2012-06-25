@@ -79,11 +79,11 @@
             </objects>
             <point key="canvasLocation" x="1193" y="-210"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="JYl-rF-g6z">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OF4-Ls-udn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ttZ-5a-R2k" sceneMemberID="viewController">
+                <viewController id="ttZ-5a-R2k" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MeL-9e-n8d">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -96,6 +96,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="8tK-AI-3OD"/>
+                    <connections>
+                        <outlet property="mapView" destination="V9w-yo-1xc" id="wa7-7F-jmr"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1697" y="-793"/>
@@ -303,24 +306,6 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="PhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PhotosAtPlaceTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosAtPlaceTVC.h"/>
-        </class>
-        <class className="RecentPhotosTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotosTVC.h"/>
-        </class>
-        <class className="TopPhotosTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopPhotosTVC.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
