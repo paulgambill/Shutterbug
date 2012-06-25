@@ -26,7 +26,7 @@
 
 - (NSString *)subtitle
 {
-    return [self.photo objectForKey:FLICKR_PHOTO_DESCRIPTION];
+    return [self.photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
 }
 
 - (CLLocationCoordinate2D)coordinate
