@@ -13,6 +13,6 @@
 
 + (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)photo;
 
-@property (nonatomic, strong) NSDictionary *photo;
+@property (nonatomic, strong) NSDictionary *flickrDictionary;
 
 @end

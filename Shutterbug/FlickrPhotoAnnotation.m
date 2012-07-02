@@ -10,30 +10,41 @@
 #import "FlickrFetcher.h"
 
 @implementation FlickrPhotoAnnotation
-@synthesize photo = _photo;
+@synthesize flickrDictionary = _flickrDictionary;
 
-+ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)photo
++ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)flickrDictionary
 {
     FlickrPhotoAnnotation *annotation = [[FlickrPhotoAnnotation alloc] init];
-    annotation.photo = photo;
+    annotation.flickrDictionary = flickrDictionary;
     return annotation;
 }
 
 - (NSString *)title
 {
-    return [self.photo objectForKey:FLICKR_PHOTO_TITLE];
+    if ([self.flickrDictionary objectForKey:FLICKR_PLACE_NAME]) {
+        return [self.flickrDictionary objectForKey:FLICKR_PLACE_NAME];
+    }
+    else {
+        return nil;
+    }
+    
 }
 
 - (NSString *)subtitle
 {
-    return [self.photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    if ([self.flickrDictionary objectForKey:FLICKR_PLACE_NAME]) {
+        return nil;
+    }
+    else {
+        return nil;
+    }
 }
 
 - (CLLocationCoordinate2D)coordinate
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = [[self.photo objectForKey:FLICKR_LATITUDE] doubleValue];
-    coordinate.longitude = [[self.photo objectForKey:FLICKR_LONGITUDE] doubleValue];
+    coordinate.latitude = [[self.flickrDictionary objectForKey:FLICKR_LATITUDE] doubleValue];
+    coordinate.longitude = [[self.flickrDictionary objectForKey:FLICKR_LONGITUDE] doubleValue];
     
     return coordinate;
 }

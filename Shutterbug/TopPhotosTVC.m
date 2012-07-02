@@ -29,8 +29,14 @@
 {
     NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.topPlaces count]];
     for (NSDictionary *place in self.topPlaces) {
-        [annotations addObject:[FlickrPhotoAnnotation annotationForFlickrDictionary:place]];
+        if ([FlickrPhotoAnnotation annotationForFlickrDictionary:place]) {
+            FlickrPhotoAnnotation *annotation = [FlickrPhotoAnnotation annotationForFlickrDictionary:place];
+            [annotations addObject:annotation];
+        }
     }
+    
+    //NSLog(@"%@", [[annotations objectAtIndex:2] flickrDictionary]);
+    
     return annotations;
 }
 
@@ -42,7 +48,6 @@
     spinner.color = [UIColor blackColor];
     spinner.center = self.view.center;
     [self.view.superview addSubview:spinner];
-    //[spinner startAnimating];
     
     dispatch_queue_t downloadPlacesQueue = dispatch_queue_create("download places", NULL);
     dispatch_async(downloadPlacesQueue, ^{
@@ -71,17 +76,20 @@
 {
     UIViewController *destination = segue.destinationViewController;
     
+    // prepare selection info
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    id object = [self.topPlaces objectAtIndex:indexPath.row];
+    NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
+                               indexPath, @"indexPath",
+                               object, @"object",
+                               nil];
+    
+    // going to next table view controller
     if ([[segue identifier] isEqualToString:@"placePhotos"]) {
-        // prepare selection info
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        id object = [self.topPlaces objectAtIndex:indexPath.row];
-        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   indexPath, @"indexPath",
-                                   object, @"object",
-                                   nil];
         [destination setValue:selection forKey:@"selection"];
     }
     
+    // going to Map view
     if ([[segue identifier] isEqualToString:@"placesMap"]) {
         [destination setValue:[self mapAnnotations] forKey:@"photos"];
     }
@@ -93,6 +101,34 @@
 }
 
 #pragma mark - Table view data source
+
+
+/*
+// method to extract the location and subtitle location of each top place
+*/
+- (NSDictionary *)locationAndSublocationAtIndex:(NSInteger)index
+{
+    NSDictionary *photo = [self.topPlaces objectAtIndex:index];
+    
+    // parse the location names by commas
+    NSArray *components = [[photo objectForKey:FLICKR_PLACE_NAME] componentsSeparatedByString:@", "];
+    NSString *sublocation = @"";
+    
+    // put together the 2nd and later location names for the subtitle text
+    for (int i=1; i<[components count]; i++) {
+        sublocation = [sublocation stringByAppendingString:[components objectAtIndex:i]];
+        sublocation = [sublocation stringByAppendingString:@", "];
+    }
+    
+    // remove the trailing comma and space
+    if ([sublocation length] > 0) sublocation = [sublocation substringToIndex:[sublocation length] - 2];
+    
+    NSDictionary *locationAndSublocation = [NSDictionary dictionaryWithObjectsAndKeys:[components objectAtIndex:0], @"location",
+                                                                                    sublocation, @"sublocation",
+                                                                                    nil];
+    
+    return locationAndSublocation;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -111,23 +147,8 @@
     static NSString *CellIdentifier = @"Top Place";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSDictionary *photo = [self.topPlaces objectAtIndex:indexPath.row];
-    
-    // parse the location names by commas
-    NSArray *components = [[photo objectForKey:FLICKR_PLACE_NAME] componentsSeparatedByString:@", "];
-    NSString *location = @"";
-    
-    // put together the 2nd and later location names for the subtitle text
-    for (int i=1; i<[components count]; i++) {
-        location = [location stringByAppendingString:[components objectAtIndex:i]];
-        location = [location stringByAppendingString:@", "];
-    }
-    
-    // remove the trailing comma and space
-    if ([location length] > 0) location = [location substringToIndex:[location length] - 2];
-    
-    cell.textLabel.text = [components objectAtIndex:0]; //specific city
-    cell.detailTextLabel.text = location; //rest of location information
+    cell.textLabel.text = [[self locationAndSublocationAtIndex:indexPath.row] objectForKey:@"location"]; //specific city
+    cell.detailTextLabel.text = [[self locationAndSublocationAtIndex:indexPath.row] objectForKey:@"sublocation"];; //rest of location information
     
     return cell;
 }
