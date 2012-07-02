@@ -159,11 +159,17 @@
                             <outlet property="delegate" destination="Il3-Ue-Yn3" id="MS2-L9-fFk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9FD-EG-Irt"/>
+                    <navigationItem key="navigationItem" id="9FD-EG-Irt">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="ibo-UI-3Wz">
+                            <connections>
+                                <segue destination="Dg5-W5-91d" kind="push" identifier="photosAtPlace to Map" id="zn1-rb-OEa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CES-NF-rfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2809" y="-474"/>
+            <point key="canvasLocation" x="2163" y="-210"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="26w-Xd-cQK">
@@ -194,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fnx-5Q-QEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3548" y="-274"/>
+            <point key="canvasLocation" x="3328" y="-210"/>
         </scene>
         <!--Recent PhotosTVC - Recent Photos-->
         <scene sceneID="iom-hz-csv">
@@ -314,11 +320,74 @@
             </objects>
             <point key="canvasLocation" x="1697" y="418"/>
         </scene>
+        <!--Map View Controller - Photos Map-->
+        <scene sceneID="pO7-p8-QIl">
+            <objects>
+                <viewController id="Dg5-W5-91d" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mBL-kv-4fU">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Uzu-fG-ML9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Nlu-qM-vWA">
+                                <rect key="frame" x="57" y="311" width="207" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapDisplayTypeChanged:" destination="Dg5-W5-91d" eventType="valueChanged" id="6Ec-ku-nnT"/>
+                                    <action selector="selectedMapView:" destination="Dg5-W5-91d" eventType="touchUpInside" id="QV0-OL-qWY"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photos Map" id="2bZ-ZN-LfY"/>
+                    <connections>
+                        <outlet property="mapView" destination="Uzu-fG-ML9" id="Ogz-nW-N64"/>
+                        <segue destination="iy8-kd-ddL" kind="push" identifier="map to Photo" id="CWj-OF-y46"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoc-fe-lbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2769" y="-793"/>
+        </scene>
     </scenes>
     <resources>
         <image name="clock.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mapDisplayTypeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="PhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="PhotosAtPlaceTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosAtPlaceTVC.h"/>
+        </class>
+        <class className="RecentPhotosTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentPhotosTVC.h"/>
+        </class>
+        <class className="TopPhotosTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopPhotosTVC.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -326,5 +395,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Tvj-Ad-Xa7"/>
+        <segue reference="CWj-OF-y46"/>
     </inferredMetricsTieBreakers>
 </document>
