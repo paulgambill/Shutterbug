@@ -105,4 +105,29 @@
     return YES;
 }
 
+#pragma mark Map Display Type Segmented Controller
+
+- (IBAction)mapDisplayTypeChanged:(UISegmentedControl *)sender {
+
+    switch (sender.selectedSegmentIndex) {
+        case 0: // Map standard
+            self.mapView.mapType = MKMapTypeStandard;
+            break;
+            
+        case 1: // Satellite
+            self.mapView.mapType = MKMapTypeSatellite;
+            break;
+            
+        case 2: // Hybrid
+            self.mapView.mapType = MKMapTypeHybrid;
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
+
 @end

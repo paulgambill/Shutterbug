@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+#define MAP MKMapTypeStandard
+#define SATELLITE MKMapTypeSatellite
+#define HYBRID MKMapTypeHybrid
+
 @interface MapViewController : UIViewController
 @property (nonatomic, strong) NSArray *photos; // of id <MKAnnotation>
 @end
