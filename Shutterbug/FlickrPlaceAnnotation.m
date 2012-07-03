@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Deloitte | Übermind. All rights reserved.
 //
 
-#import "FlickrPhotoAnnotation.h"
+#import "FlickrPlaceAnnotation.h"
 #import "FlickrFetcher.h"
 
-@implementation FlickrPhotoAnnotation
+@implementation FlickrPlaceAnnotation
 @synthesize flickrDictionary = _flickrDictionary;
 
-+ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)flickrDictionary
++ (FlickrPlaceAnnotation *)annotationForFlickrDictionary:(NSDictionary *)flickrDictionary
 {
-    FlickrPhotoAnnotation *annotation = [[FlickrPhotoAnnotation alloc] init];
+    FlickrPlaceAnnotation *annotation = [[FlickrPlaceAnnotation alloc] init];
     annotation.flickrDictionary = flickrDictionary;
     return annotation;
 }

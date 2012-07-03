@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F412E21A1576E1B900CBCF7E /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F412E2191576E1B900CBCF7E /* FlickrFetcher.m */; };
 		F41BB135158914A2007A604B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BB134158914A2007A604B /* MapViewController.m */; };
-		F41BB139158A5373007A604B /* FlickrPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BB138158A5373007A604B /* FlickrPhotoAnnotation.m */; };
+		F41BB139158A5373007A604B /* FlickrPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BB138158A5373007A604B /* FlickrPlaceAnnotation.m */; };
 		F4388573156EAD96000C2AB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4388572156EAD96000C2AB1 /* UIKit.framework */; };
 		F4388575156EAD96000C2AB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4388574156EAD96000C2AB1 /* Foundation.framework */; };
 		F4388577156EAD96000C2AB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4388576156EAD96000C2AB1 /* CoreGraphics.framework */; };
@@ -35,8 +35,8 @@
 		F412E2191576E1B900CBCF7E /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		F41BB133158914A2007A604B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F41BB134158914A2007A604B /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		F41BB137158A5373007A604B /* FlickrPhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoAnnotation.h; sourceTree = "<group>"; };
-		F41BB138158A5373007A604B /* FlickrPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoAnnotation.m; sourceTree = "<group>"; };
+		F41BB137158A5373007A604B /* FlickrPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPlaceAnnotation.h; sourceTree = "<group>"; };
+		F41BB138158A5373007A604B /* FlickrPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPlaceAnnotation.m; sourceTree = "<group>"; };
 		F438856E156EAD96000C2AB1 /* Shutterbug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shutterbug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4388572156EAD96000C2AB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F4388574156EAD96000C2AB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,8 +127,8 @@
 				F4388598156EB271000C2AB1 /* TopPhotosTVC.m */,
 				F41BB133158914A2007A604B /* MapViewController.h */,
 				F41BB134158914A2007A604B /* MapViewController.m */,
-				F41BB137158A5373007A604B /* FlickrPhotoAnnotation.h */,
-				F41BB138158A5373007A604B /* FlickrPhotoAnnotation.m */,
+				F41BB137158A5373007A604B /* FlickrPlaceAnnotation.h */,
+				F41BB138158A5373007A604B /* FlickrPlaceAnnotation.m */,
 				F4CA8D64157D2A4B0083957D /* PhotosAtPlaceTVC.h */,
 				F4CA8D65157D2A4B0083957D /* PhotosAtPlaceTVC.m */,
 				F4C27875157D715600C957B2 /* PhotoViewController.h */,
@@ -241,7 +241,7 @@
 				F4CA8D66157D2A4B0083957D /* PhotosAtPlaceTVC.m in Sources */,
 				F4C27877157D715600C957B2 /* PhotoViewController.m in Sources */,
 				F41BB135158914A2007A604B /* MapViewController.m in Sources */,
-				F41BB139158A5373007A604B /* FlickrPhotoAnnotation.m in Sources */,
+				F41BB139158A5373007A604B /* FlickrPlaceAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

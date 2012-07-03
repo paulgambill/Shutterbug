@@ -8,6 +8,7 @@
 
 #import "PhotosAtPlaceTVC.h"
 #import "FlickrFetcher.h"
+#import "FlickrPhotoAnnotation.h"
 
 @interface PhotosAtPlaceTVC ()
 @property (nonatomic, copy) NSDictionary *selection;
@@ -18,6 +19,18 @@
 @synthesize selection = _selection;
 @synthesize photosAtPlace = _photosAtPlace;
 
+- (NSArray *)mapAnnotations
+{
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.photosAtPlace count]];
+    for (NSDictionary *place in self.photosAtPlace) {
+        if ([FlickrPhotoAnnotation annotationForFlickrDictionary:place]) {
+            FlickrPhotoAnnotation *annotation = [FlickrPhotoAnnotation annotationForFlickrDictionary:place];
+            [annotations addObject:annotation];
+        }
+    }
+    
+    return annotations;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -75,6 +88,7 @@
 {
     UIViewController *destination = segue.destinationViewController;
     
+    // going directly to photo
     if ([[segue identifier] isEqualToString:@"photo view"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
@@ -90,6 +104,11 @@
         [selection removeObjectForKey:@"indexPath"];
         
         [PhotosAtPlaceTVC addSelectedPhotoToRecents:selection];        
+    }
+    
+    // going to map
+    if ([[segue identifier] isEqualToString:@"photosAtPlace to Map"]) {
+        [destination setValue:[self mapAnnotations] forKey:@"photos"];
     }
 }
 

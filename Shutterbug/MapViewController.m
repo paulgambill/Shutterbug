@@ -78,7 +78,8 @@
     // going to photo view controller
     if ([[segue identifier] isEqualToString:@"map to Photo"]) {
         //segue here
-        //NSDictionary *titleAndSubtitle = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:selection];
+        NSDictionary *titleAndSubtitle = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:self.selection];
+        [PhotosAtPlaceTVC addSelectedPhotoToRecents:self.selection];
     }
 }
 

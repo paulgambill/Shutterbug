@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface FlickrPhotoAnnotation : NSObject <MKAnnotation>
+@interface FlickrPlaceAnnotation : NSObject <MKAnnotation>
 
-+ (FlickrPhotoAnnotation *)annotationForFlickrDictionary:(NSDictionary *)photo;
++ (FlickrPlaceAnnotation *)annotationForFlickrDictionary:(NSDictionary *)photo;
 
 @property (nonatomic, strong) NSDictionary *flickrDictionary;
 

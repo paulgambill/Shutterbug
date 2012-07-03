@@ -8,7 +8,7 @@
 
 #import "TopPhotosTVC.h"
 #import "FlickrFetcher.h"
-#import "FlickrPhotoAnnotation.h"
+#import "FlickrPlaceAnnotation.h"
 
 @interface TopPhotosTVC ()
 @end
@@ -29,8 +29,8 @@
 {
     NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.topPlaces count]];
     for (NSDictionary *place in self.topPlaces) {
-        if ([FlickrPhotoAnnotation annotationForFlickrDictionary:place]) {
-            FlickrPhotoAnnotation *annotation = [FlickrPhotoAnnotation annotationForFlickrDictionary:place];
+        if ([FlickrPlaceAnnotation annotationForFlickrDictionary:place]) {
+            FlickrPlaceAnnotation *annotation = [FlickrPlaceAnnotation annotationForFlickrDictionary:place];
             [annotations addObject:annotation];
         }
     }
@@ -101,9 +101,8 @@
 #pragma mark - Table view data source
 
 
-/*
+
 // method to extract the location and subtitle location of each top place
-*/
 - (NSDictionary *)locationAndSublocationAtIndex:(NSInteger)index
 {
     NSDictionary *photo = [self.topPlaces objectAtIndex:index];
