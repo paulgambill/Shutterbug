@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "FlickrPhotoAnnotation.h"
+#import "FlickrPlaceAnnotation.h"
 #import "PhotosAtPlaceTVC.h"
 
 @interface MapViewController () <MKMapViewDelegate>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F403FF1715A36B0A005AB1B0 /* FlickrPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F403FF1615A36B0A005AB1B0 /* FlickrPhotoAnnotation.m */; };
 		F412E21A1576E1B900CBCF7E /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F412E2191576E1B900CBCF7E /* FlickrFetcher.m */; };
 		F41BB135158914A2007A604B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BB134158914A2007A604B /* MapViewController.m */; };
 		F41BB139158A5373007A604B /* FlickrPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BB138158A5373007A604B /* FlickrPlaceAnnotation.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F403FF1515A36B0A005AB1B0 /* FlickrPhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoAnnotation.h; sourceTree = "<group>"; };
+		F403FF1615A36B0A005AB1B0 /* FlickrPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoAnnotation.m; sourceTree = "<group>"; };
 		F412E2171576E1B900CBCF7E /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		F412E2181576E1B900CBCF7E /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		F412E2191576E1B900CBCF7E /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				F4388598156EB271000C2AB1 /* TopPhotosTVC.m */,
 				F41BB133158914A2007A604B /* MapViewController.h */,
 				F41BB134158914A2007A604B /* MapViewController.m */,
+				F403FF1515A36B0A005AB1B0 /* FlickrPhotoAnnotation.h */,
+				F403FF1615A36B0A005AB1B0 /* FlickrPhotoAnnotation.m */,
 				F41BB137158A5373007A604B /* FlickrPlaceAnnotation.h */,
 				F41BB138158A5373007A604B /* FlickrPlaceAnnotation.m */,
 				F4CA8D64157D2A4B0083957D /* PhotosAtPlaceTVC.h */,
@@ -242,6 +247,7 @@
 				F4C27877157D715600C957B2 /* PhotoViewController.m in Sources */,
 				F41BB135158914A2007A604B /* MapViewController.m in Sources */,
 				F41BB139158A5373007A604B /* FlickrPlaceAnnotation.m in Sources */,
+				F403FF1715A36B0A005AB1B0 /* FlickrPhotoAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
