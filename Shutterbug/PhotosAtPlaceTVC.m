@@ -103,12 +103,13 @@
         // remove non-property list before adding the dictionary to UserDefaults
         [selection removeObjectForKey:@"indexPath"];
         
-        [PhotosAtPlaceTVC addSelectedPhotoToRecents:selection];        
+        [PhotosAtPlaceTVC addSelectedPhotoToRecents:selection];
     }
     
     // going to map
     if ([[segue identifier] isEqualToString:@"photosAtPlace to Map"]) {
         [destination setValue:[self mapAnnotations] forKey:@"photos"];
+        [destination setValue:@"photosMap" forKey:@"whichMap"];
     }
 }
 

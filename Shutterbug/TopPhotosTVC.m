@@ -90,6 +90,7 @@
     // going to Map view
     if ([[segue identifier] isEqualToString:@"placesMap"]) {
         [destination setValue:[self mapAnnotations] forKey:@"photos"];
+        [destination setValue:@"placesMap" forKey:@"whichMap"];
     }
 }
 

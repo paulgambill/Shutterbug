@@ -14,6 +14,7 @@
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSDictionary *selection;
+@property (nonatomic, strong) NSString *whichMap;
 @end
 
 @implementation MapViewController
@@ -64,7 +65,13 @@
 // action on tapping the disclosure button
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    [self performSegueWithIdentifier:@"Map to PhotosAtPlace" sender:self];
+    if ([self.whichMap isEqualToString:@"placesMap"]) {
+        [self performSegueWithIdentifier:@"Map to PhotosAtPlace" sender:self];
+    }
+    else if ([self.whichMap isEqualToString:@"photosMap"]) {
+        [self performSegueWithIdentifier:@"map to Photo" sender:self];
+    }
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -78,9 +85,12 @@
     
     // going to photo view controller
     if ([[segue identifier] isEqualToString:@"map to Photo"]) {
-        //segue here
-        NSDictionary *titleAndSubtitle = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:self.selection];
+        
+        NSDictionary *cellText = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:[self.selection objectForKey:@"object"]];
+        NSDictionary *photoDictionaryToSend = [NSDictionary dictionaryWithObjectsAndKeys:[self.selection objectForKey:@"object"], @"photo",
+                                                                                        cellText, @"cellText", nil];
         [PhotosAtPlaceTVC addSelectedPhotoToRecents:self.selection];
+        [destination setValue:photoDictionaryToSend forKey:@"selection"];
     }
 }
 

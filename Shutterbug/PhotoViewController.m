@@ -16,6 +16,7 @@
 @end
 
 @implementation PhotoViewController
+
 @synthesize selection = _selection;
 @synthesize scrollView = _scrollView;
 @synthesize imageView = _imageView;
