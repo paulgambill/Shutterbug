@@ -35,8 +35,6 @@
         }
     }
     
-    //NSLog(@"%@", [[annotations objectAtIndex:2] flickrDictionary]);
-    
     return annotations;
 }
 

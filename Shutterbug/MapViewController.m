@@ -70,9 +70,15 @@
 {
     UIViewController *destination = segue.destinationViewController;
     
-    // going to next table view controller
+    // going to photos at place table view controller
     if ([[segue identifier] isEqualToString:@"Map to PhotosAtPlace"]) {
         [destination setValue:self.selection forKey:@"selection"];
+    }
+    
+    // going to photo view controller
+    if ([[segue identifier] isEqualToString:@"map to Photo"]) {
+        //segue here
+        //NSDictionary *titleAndSubtitle = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:selection];
     }
 }
 

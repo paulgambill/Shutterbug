@@ -10,4 +10,7 @@
 
 @interface PhotosAtPlaceTVC : UITableViewController
 
++ (NSDictionary *)titleAndSubtitleFromPhotoDictionary:(NSDictionary *)photo;
++ (void)addSelectedPhotoToRecents:(NSDictionary *)photo;
+
 @end

@@ -78,7 +78,7 @@
     if ([[segue identifier] isEqualToString:@"photo view"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
-        NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
+        NSDictionary *cellText = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:photo];
         NSMutableDictionary *selection = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    indexPath, @"indexPath",
                                    photo, @"photo",
@@ -89,36 +89,12 @@
         // remove non-property list before adding the dictionary to UserDefaults
         [selection removeObjectForKey:@"indexPath"];
         
-        //saving photo to NSUserDefaults for use in Recents tab
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSMutableArray *selectedPhotos = nil;
-        if ([defaults objectForKey:@"selectedPhotos"]) {
-            selectedPhotos = [[defaults objectForKey:@"selectedPhotos"] mutableCopy];
-            
-            // only add a new recent photo if it's not already stored in recents
-            if (![selectedPhotos containsObject:selection]){
-            
-                // checks how many recent photos are stored. the max is 20. recent photos are inserted at the head of the array.
-                if ([selectedPhotos count] < 20) {
-                    [selectedPhotos insertObject:selection atIndex:0];
-                }
-                //else, remove the last object in the array and insert this new one at the head
-                else {
-                    [selectedPhotos removeLastObject];
-                    [selectedPhotos insertObject:selection atIndex:0];
-                }
-            }
-        }
-        else {
-            selectedPhotos = [NSMutableArray arrayWithObject:selection];
-        }
-        [defaults setObject:selectedPhotos forKey:@"selectedPhotos"];
-        [defaults synchronize];
+        [PhotosAtPlaceTVC addSelectedPhotoToRecents:selection];        
     }
 }
 
 // helper method to get the correct title and subtitle for each cell
-- (NSDictionary *)titleAndSubtitleFromPhotoDictionary:(NSDictionary *)photo
++ (NSDictionary *)titleAndSubtitleFromPhotoDictionary:(NSDictionary *)photo
 {
     NSString *title = [photo valueForKey:FLICKR_PHOTO_TITLE];
     NSString *subtitle = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
@@ -143,6 +119,36 @@
                               nil];
     
     return cellText;
+}
+
+// helper method to add selected to recent photos if necessary
++ (void)addSelectedPhotoToRecents:(NSDictionary *)selection
+{
+    //saving photo to NSUserDefaults for use in Recents tab
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *selectedPhotos = nil;
+    if ([defaults objectForKey:@"selectedPhotos"]) {
+        selectedPhotos = [[defaults objectForKey:@"selectedPhotos"] mutableCopy];
+        
+        // only add a new recent photo if it's not already stored in recents
+        if (![selectedPhotos containsObject:selection]){
+            
+            // checks how many recent photos are stored. the max is 20. recent photos are inserted at the head of the array.
+            if ([selectedPhotos count] < 20) {
+                [selectedPhotos insertObject:selection atIndex:0];
+            }
+            //else, remove the last object in the array and insert this new one at the head
+            else {
+                [selectedPhotos removeLastObject];
+                [selectedPhotos insertObject:selection atIndex:0];
+            }
+        }
+    }
+    else {
+        selectedPhotos = [NSMutableArray arrayWithObject:selection];
+    }
+    [defaults setObject:selectedPhotos forKey:@"selectedPhotos"];
+    [defaults synchronize];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -170,7 +176,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSDictionary *photo = [self.photosAtPlace objectAtIndex:indexPath.row];
-    NSDictionary *cellText = [self titleAndSubtitleFromPhotoDictionary:photo];
+    NSDictionary *cellText = [PhotosAtPlaceTVC titleAndSubtitleFromPhotoDictionary:photo];
     
     // set the cell title labels
     cell.textLabel.text = [cellText objectForKey:@"title"];
