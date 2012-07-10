@@ -46,13 +46,16 @@
     spinner.color = [UIColor blackColor];
     spinner.center = self.view.center;
     [self.view.superview addSubview:spinner];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     dispatch_queue_t downloadPlacesQueue = dispatch_queue_create("download places", NULL);
     dispatch_async(downloadPlacesQueue, ^{
         [spinner startAnimating];
         self.topPlaces = [FlickrFetcher topPlaces];
+        //sleep(3);
         dispatch_async(dispatch_get_main_queue(), ^{
             [spinner stopAnimating];
+            self.navigationItem.rightBarButtonItem.enabled = YES;
             [self.tableView reloadData];
             [super viewWillAppear:animated];
         });

@@ -18,6 +18,7 @@
 @end
 
 @implementation MapViewController
+@synthesize whichMap = _whichMap;
 @synthesize mapView = _mapView;
 @synthesize photos = _photos;
 @synthesize selection = _selection;
