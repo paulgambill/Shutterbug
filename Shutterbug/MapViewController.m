@@ -10,6 +10,7 @@
 #import "FlickrPhotoAnnotation.h"
 #import "FlickrPlaceAnnotation.h"
 #import "PhotosAtPlaceTVC.h"
+#import "FlickrFetcher.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -31,9 +32,43 @@
     if (self.photos) {
         [self.mapView addAnnotations:self.photos];
     }
+    
+    //set the visible region
+    //[self.mapView setRegion:[self getCoordinateRegionFromAnnotationsArray] animated:YES];
 }
 
--(void)setPhotos:(NSArray *)photos
+- (MKCoordinateRegion)getCoordinateRegionFromAnnotationsArray
+{
+    MKCoordinateRegion region;
+    NSMutableArray *latitudes = [[NSMutableArray alloc] init];
+    NSMutableArray *longitudes = [[NSMutableArray alloc] init];
+    
+    for (FlickrPhotoAnnotation *annotation in self.photos) {
+        [latitudes addObject:[NSNumber numberWithDouble:[[annotation.flickrDictionary valueForKey:FLICKR_LATITUDE] doubleValue]]];
+        [longitudes addObject:[NSNumber numberWithDouble:[[annotation.flickrDictionary valueForKey:FLICKR_LONGITUDE] doubleValue]]];
+    }
+    
+    
+    
+    NSNumber *minLatitude = [latitudes valueForKeyPath:@"@min.doubleValue"];
+    NSNumber *maxLatitude = [latitudes valueForKeyPath:@"@max.doubleValue"];
+    NSNumber *minLongitude = [longitudes valueForKeyPath:@"@min.doubleValue"];
+    NSNumber *maxLongitude = [longitudes valueForKeyPath:@"@max.doubleValue"];
+    
+    NSLog(@"minLatitude: %@", minLatitude);
+    NSLog(@"maxLatitude: %@", maxLatitude);
+    NSLog(@"minLongitude: %@", minLongitude);
+    NSLog(@"maxLongitude: %@", maxLongitude);
+    
+    region.span.latitudeDelta = [maxLatitude doubleValue] - [minLatitude doubleValue];
+    region.span.longitudeDelta = [maxLongitude doubleValue] - [minLongitude doubleValue];
+    region.center.latitude = (fabs([maxLatitude doubleValue]) - fabs([minLatitude doubleValue]))/2;
+    region.center.longitude = (fabs([maxLongitude doubleValue]) - fabs([minLongitude doubleValue]))/2;
+    
+    return region;
+}
+
+- (void)setPhotos:(NSArray *)photos
 {
     _photos = photos;
     [self updateMapView];
@@ -110,6 +145,8 @@
     [super viewDidLoad];
     self.mapView.delegate = self;
     [self updateMapView];
+    //set the visible region
+    [self.mapView setRegion:[self getCoordinateRegionFromAnnotationsArray] animated:YES];
 }
 
 - (void)viewDidUnload
