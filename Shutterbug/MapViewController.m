@@ -48,24 +48,55 @@
         [longitudes addObject:[NSNumber numberWithDouble:[[annotation.flickrDictionary valueForKey:FLICKR_LONGITUDE] doubleValue]]];
     }
     
-    
-    
     NSNumber *minLatitude = [latitudes valueForKeyPath:@"@min.doubleValue"];
     NSNumber *maxLatitude = [latitudes valueForKeyPath:@"@max.doubleValue"];
     NSNumber *minLongitude = [longitudes valueForKeyPath:@"@min.doubleValue"];
     NSNumber *maxLongitude = [longitudes valueForKeyPath:@"@max.doubleValue"];
     
-    NSLog(@"minLatitude: %@", minLatitude);
-    NSLog(@"maxLatitude: %@", maxLatitude);
-    NSLog(@"minLongitude: %@", minLongitude);
-    NSLog(@"maxLongitude: %@", maxLongitude);
     
-    region.span.latitudeDelta = [maxLatitude doubleValue] - [minLatitude doubleValue];
-    region.span.longitudeDelta = [maxLongitude doubleValue] - [minLongitude doubleValue];
-    region.center.latitude = (fabs([maxLatitude doubleValue]) - fabs([minLatitude doubleValue]))/2;
-    region.center.longitude = (fabs([maxLongitude doubleValue]) - fabs([minLongitude doubleValue]))/2;
+//    NSLog(@"minLatitude: %@", minLatitude);
+//    NSLog(@"maxLatitude: %@", maxLatitude);
+//    NSLog(@"minLongitude: %@", minLongitude);
+//    NSLog(@"maxLongitude: %@", maxLongitude);
+    
+    NSDictionary *latitudeValues = [self calculateSpanAndCenterForMax:maxLatitude andMin:minLatitude];
+    NSDictionary *longitudeValues = [self calculateSpanAndCenterForMax:maxLongitude andMin:minLongitude];
+    
+    region.span.latitudeDelta = [[latitudeValues objectForKey:@"span"] doubleValue];
+    NSLog(@"region.span.latitudeDelta: %f", region.span.latitudeDelta);
+    region.span.longitudeDelta = [[longitudeValues objectForKey:@"span"] doubleValue];
+    NSLog(@"region.span.longitudeDelta: %f", region.span.longitudeDelta);
+    region.center.latitude = [[latitudeValues objectForKey:@"center"] doubleValue];
+    NSLog(@"region.center.latitude: %f", region.center.latitude);
+    region.center.longitude = [[longitudeValues objectForKey:@"center"] doubleValue];
+    NSLog(@"region.center.longitude: %f", region.center.longitude);
     
     return region;
+}
+
+- (NSMutableDictionary *)calculateSpanAndCenterForMax:(NSNumber *)maxNumber andMin:(NSNumber *)minNumber
+{
+    NSMutableDictionary *spanAndCenter = [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil, @"span",
+                                                                               nil, @"center", nil];
+    double maxValue = [maxNumber doubleValue];
+    double minValue = [minNumber doubleValue];
+
+    
+    if (maxValue >= 0 && minValue >= 0) {
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue-minValue)] forKey:@"span"];
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue+minValue)/2] forKey:@"center"];
+    } else if (maxValue >= 0 && minValue < 0) {
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue-minValue)] forKey:@"span"];
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue-minValue)/2+minValue] forKey:@"center"];
+    } else if (maxValue < 0 && minValue >= 0) {
+        [spanAndCenter setObject:[NSNumber numberWithDouble:fabs(maxValue-minValue)] forKey:@"span"];
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue-minValue)/2+minValue] forKey:@"center"];
+    } else if (maxValue < 0 && minValue < 0) {
+        [spanAndCenter setObject:[NSNumber numberWithDouble:fabs(fabs(maxValue)+minValue)] forKey:@"span"];
+        [spanAndCenter setObject:[NSNumber numberWithDouble:(maxValue+minValue)/2] forKey:@"center"];
+    }
+    
+    return spanAndCenter;
 }
 
 - (void)setPhotos:(NSArray *)photos
@@ -83,7 +114,6 @@
         aView.canShowCallout = YES;
         aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
-    
     aView.annotation = annotation;
     
     return aView;
